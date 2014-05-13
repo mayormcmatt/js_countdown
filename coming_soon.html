@@ -8,7 +8,10 @@
 <body>
 
 <div id="countdown_wrapper">
-  <img id="hexes" src="images/hexes.png"/>
+  <img id="two" src="images/2.png"/>
+  <img id="zero" src="images/0.png"/>
+  <img id="one" src="images/1.png"/>
+  <img id="five" src="images/5.png"/>
   <br>
   <span id="days">20</span>
   <span id="hours">12</span>
@@ -20,90 +23,159 @@
 </html>
 
 <style>
+
+body{
+  background: url(images/countdown_bg.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 #countdown_wrapper{
   text-align: center;
 }
 
-#hexes{
-  position: relative;
-  margin-top: 100px;
-  width: 60%;
+/* 2015 images */
+
+#two, #one, #zero, #five{
+  z-index: 999;
+  position: absolute;
+  width: 18%;
 }
 
+#two{
+  margin-top: 4%;
+  margin-left: -30%;
+}
+
+#zero{
+  margin-top: 16%;
+  margin-left: -18%;
+}
+
+#one{
+  margin-top: 11.5%;
+  margin-left: -1.5%;
+}
+
+#five{
+  margin-top: 23%;
+  margin-left: 11%;
+}
+
+/* text spans */
+
 #days, #hours, #minutes, #seconds{
+  z-index: -1;
+  color: white;
   position: absolute;
-  font-size: 8vw;
+  font-size: 7vw;
 }
 
 #days{
-  margin-top: -33%;
-  margin-left: -24%;
+  margin-top: 6.5%;
+  margin-left: -25%;
 }
 
 #hours{
-  margin-top: -22%;
-  margin-left: -13%;
+  margin-top: 18.5%;
+  margin-left: -13.5%;;
 }
 
 #minutes{
-  margin-top: -26%;
-  margin-left: 2%;
+  margin-top: 14%;
+  margin-left: 3.5%;
 }
 
 #seconds{
-  margin-top: -15%;
-  margin-left: 15%;
+  margin-top: 25.5%;
+  margin-left: 16%;
 }
 
 </style>
 
 <script>
 
-    // set the date we're counting down to
-    var target_date = new Date("June, 1, 2014").getTime();
+// set the date we're counting down to
+var target_date = new Date("June, 1, 2014").getTime();
 
-    // variables for time units
-    var days, hours, minutes, seconds;
+// variables for time units
+var days, hours, minutes, seconds;
 
-    // get tag element
-    // var countdown = document.getElementById("countdown");
-    var dayDiv = document.getElementById("days");
-    var hourDiv = document.getElementById("hours");
-    var minuteDiv = document.getElementById("minutes");
-    var secondDiv = document.getElementById("seconds");
+// get tag element
+// var countdown = document.getElementById("countdown");
+var daysSpan = document.getElementById("days");
+var hoursSpan = document.getElementById("hours");
+var minutesSpan = document.getElementById("minutes");
+var secondsSpan = document.getElementById("seconds");
 
-    // update the tag with id "countdown" every 1 second
-    setInterval(function () {
+// update the tag with id "countdown" every 1 second
+setInterval(function () {
 
-        // find the amount of "seconds" between now and target
-        var current_date = new Date().getTime();
-        var seconds_left = (target_date - current_date) / 1000;
+  // find the amount of "seconds" between now and target
+  var current_date = new Date().getTime();
+  var seconds_left = (target_date - current_date) / 1000;
 
-        // do some time calculations
-        days = parseInt(seconds_left / 86400);
-        seconds_left = seconds_left % 86400;
+  // do some time calculations
+  var days = parseInt(seconds_left / 86400);
+  var seconds_left = seconds_left % 86400;
 
-        hours = parseInt(seconds_left / 3600);
-        seconds_left = seconds_left % 3600;
+  var hours = parseInt(seconds_left / 3600);
+  var seconds_left = seconds_left % 3600;
 
-        minutes = parseInt(seconds_left / 60);
-        seconds = parseInt(seconds_left % 60);
+  var minutes = parseInt(seconds_left / 60);
+  var seconds = parseInt(seconds_left % 60);
 
-        // format countdown string + set tag value
-        // countdown.innerHTML = days + "d, " + hours + "h, "
-        // + minutes + "m, " + seconds + "s";
+  // format countdown string + set tag value
+  // countdown.innerHTML = days + "d, " + hours + "h, "
+  // + minutes + "m, " + seconds + "s";
 
-        dayFrom.innerHTML = days;
-        hourFrom.innerHTML = hours;
-        minuteFrom.innerHTML = minutes;
-        secondFrom.innerHTML = seconds;
+  daysSpan.innerHTML = days;
+  hoursSpan.innerHTML = hours;
+  minutesSpan.innerHTML = minutes;
+  secondsSpan.innerHTML = seconds;
 
-    }, 1000);
+}, 1000);
 
-causeRepaintsOn = $("span");
+// for getting Safari to repaint text on resize
+var causeRepaintsOn = $("span");
 
 $(window).resize(function() {
   causeRepaintsOn.css("z-index", 1);
+});
+
+var two = $("#two");
+var zero = $("#zero");
+var one = $("#one");
+var five = $("#five");
+
+two.mouseover(function(){
+  $(this).attr("src", "images/days.png");
+})
+.mouseout(function(){
+  $(this).attr("src", "images/2.png");
+});
+
+zero.mouseover(function(){
+  $(this).attr("src", "images/hours.png");
+})
+.mouseout(function(){
+  $(this).attr("src", "images/0.png");
+});
+
+one.mouseover(function(){
+  $(this).attr("src", "images/minutes.png");
+})
+.mouseout(function(){
+  $(this).attr("src", "images/1.png");
+});
+
+five.mouseover(function(){
+  $(this).attr("src", "images/seconds.png");
+})
+.mouseout(function(){
+  $(this).attr("src", "images/5.png");
 });
 
  </script>
