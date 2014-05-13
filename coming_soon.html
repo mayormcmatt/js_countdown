@@ -10,10 +10,10 @@
 <body>
 
 <div id="countdown_wrapper">
-  <img id="two" src="images/2.png"/>
-  <img id="zero" src="images/0.png"/>
-  <img id="one" src="images/1.png"/>
-  <img id="five" src="images/5.png"/>
+  <img id="two" src="images/days.png"/>
+  <img id="zero" src="images/hours.png"/>
+  <img id="one" src="images/minutes.png"/>
+  <img id="five" src="images/seconds.png"/>
   <br>
   <span id="days"></span>
   <span id="hours"></span>
@@ -86,7 +86,7 @@
 
     #hours{
       margin-top: 20.5%;
-      margin-left: -13.5%;;
+      margin-left: -15%;;
     }
 
     #minutes{
@@ -180,31 +180,31 @@
     var five = $("#five");
 
     two.mouseover(function(){
-      $(this).attr("src", "images/days.png");
+      $(this).attr("src", "images/2.png");
     })
     .mouseout(function(){
-      $(this).attr("src", "images/2.png");
+      $(this).attr("src", "images/days.png");
     });
 
     zero.mouseover(function(){
-      $(this).attr("src", "images/hours.png");
+      $(this).attr("src", "images/0.png");
     })
     .mouseout(function(){
-      $(this).attr("src", "images/0.png");
+      $(this).attr("src", "images/hours.png");
     });
 
     one.mouseover(function(){
-      $(this).attr("src", "images/minutes.png");
+      $(this).attr("src", "images/1.png");
     })
     .mouseout(function(){
-      $(this).attr("src", "images/1.png");
+      $(this).attr("src", "images/minutes.png");
     });
 
     five.mouseover(function(){
-      $(this).attr("src", "images/seconds.png");
+      $(this).attr("src", "images/5.png");
     })
     .mouseout(function(){
-      $(this).attr("src", "images/5.png");
+      $(this).attr("src", "images/seconds.png");
     });
 </script>
 
