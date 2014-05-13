@@ -2,18 +2,62 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <title>Coming Soon</title>
 </head>
-
 <body>
 
-    <div id="dayFrom"></div>
-    <div id="hourFrom"></div>
-    <div id="minuteFrom"></div>
-    <div id="secondFrom"></div>
-    <!-- <div id="countdown"></div> -->
+<div id="countdown_wrapper">
+  <img id="hexes" src="images/hexes.png"/>
+  <br>
+  <span id="days">20</span>
+  <span id="hours">12</span>
+  <span id="minutes">45</span>
+  <span id="seconds">59</span>
+</div>
 
-    <script>
+</body>
+</html>
+
+<style>
+#countdown_wrapper{
+  text-align: center;
+}
+
+#hexes{
+  position: relative;
+  margin-top: 100px;
+  width: 60%;
+}
+
+#days, #hours, #minutes, #seconds{
+  position: absolute;
+  font-size: 8vw;
+}
+
+#days{
+  margin-top: -33%;
+  margin-left: -24%;
+}
+
+#hours{
+  margin-top: -22%;
+  margin-left: -13%;
+}
+
+#minutes{
+  margin-top: -26%;
+  margin-left: 2%;
+}
+
+#seconds{
+  margin-top: -15%;
+  margin-left: 15%;
+}
+
+</style>
+
+<script>
 
     // set the date we're counting down to
     var target_date = new Date("June, 1, 2014").getTime();
@@ -23,10 +67,10 @@
 
     // get tag element
     // var countdown = document.getElementById("countdown");
-    var dayDiv = document.getElementById("dayFrom");
-    var hourDiv = document.getElementById("hourFrom");
-    var minuteDiv = document.getElementById("minuteFrom");
-    var secondDiv = document.getElementById("secondFrom");
+    var dayDiv = document.getElementById("days");
+    var hourDiv = document.getElementById("hours");
+    var minuteDiv = document.getElementById("minutes");
+    var secondDiv = document.getElementById("seconds");
 
     // update the tag with id "countdown" every 1 second
     setInterval(function () {
@@ -56,6 +100,10 @@
 
     }, 1000);
 
-    </script>
-</body>
-</html>
+causeRepaintsOn = $("span");
+
+$(window).resize(function() {
+  causeRepaintsOn.css("z-index", 1);
+});
+
+ </script>
