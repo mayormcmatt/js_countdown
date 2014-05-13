@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- To use Google Fonts 'Orbitron' just uncomment the line below -->
+    <!-- <link href='http://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'> -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <title>Coming Soon</title>
 </head>
@@ -13,169 +15,176 @@
   <img id="one" src="images/1.png"/>
   <img id="five" src="images/5.png"/>
   <br>
-  <span id="days">20</span>
-  <span id="hours">12</span>
-  <span id="minutes">45</span>
-  <span id="seconds">59</span>
+  <span id="days"></span>
+  <span id="hours"></span>
+  <span id="minutes"></span>
+  <span id="seconds"></span>
 </div>
 
 </body>
-</html>
 
 <style>
+    body{
+      background: url(images/countdown_bg.jpg) no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
 
-body{
-  background: url(images/countdown_bg.jpg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
+    @font-face {
+      font-family: 'Orbitron';
+      src: url('fonts/Orbitron-Regular.ttf') format('ttf');
+    }
 
-#countdown_wrapper{
-  text-align: center;
-}
+    #countdown_wrapper{
+      text-align: center;
+    }
 
-/* 2015 images */
+    /* 2015 images */
 
-#two, #one, #zero, #five{
-  z-index: 999;
-  position: absolute;
-  width: 18%;
-}
+    #two, #one, #zero, #five{
+      z-index: 999;
+      position: absolute;
+      width: 18%;
+    }
 
-#two{
-  margin-top: 4%;
-  margin-left: -30%;
-}
+    #two{
+      margin-top: 4%;
+      margin-left: -30%;
+    }
 
-#zero{
-  margin-top: 16%;
-  margin-left: -18%;
-}
+    #zero{
+      margin-top: 16%;
+      margin-left: -18%;
+    }
 
-#one{
-  margin-top: 11.5%;
-  margin-left: -1.5%;
-}
+    #one{
+      margin-top: 11.5%;
+      margin-left: -1.5%;
+    }
 
-#five{
-  margin-top: 23%;
-  margin-left: 11%;
-}
+    #five{
+      margin-top: 23%;
+      margin-left: 11%;
+    }
 
-/* text spans */
+    /* text spans */
 
-#days, #hours, #minutes, #seconds{
-  z-index: -1;
-  color: white;
-  position: absolute;
-  font-size: 7vw;
-}
+    #days, #hours, #minutes, #seconds{
+      z-index: -1;
+      color: white;
+      position: absolute;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 7vw;
+    }
 
-#days{
-  margin-top: 6.5%;
-  margin-left: -25%;
-}
+    #days{
+      margin-top: 8.5%;
+      margin-left: -27%;
+    }
 
-#hours{
-  margin-top: 18.5%;
-  margin-left: -13.5%;;
-}
+    #hours{
+      margin-top: 20.5%;
+      margin-left: -13.5%;;
+    }
 
-#minutes{
-  margin-top: 14%;
-  margin-left: 3.5%;
-}
+    #minutes{
+      margin-top: 16%;
+      margin-left: 1.5%;
+    }
 
-#seconds{
-  margin-top: 25.5%;
-  margin-left: 16%;
-}
-
+    #seconds{
+      margin-top: 27.5%;
+      margin-left: 14.5%;
+    }
 </style>
 
 <script>
+    // set the date we're counting down to
+    var target_date = new Date("June, 13, 2014").getTime();
 
-// set the date we're counting down to
-var target_date = new Date("June, 1, 2014").getTime();
+    // variables for time units
+    var days, hours, minutes, seconds;
 
-// variables for time units
-var days, hours, minutes, seconds;
+    // get tag element
+    var daysSpan = document.getElementById("days");
+    var hoursSpan = document.getElementById("hours");
+    var minutesSpan = document.getElementById("minutes");
+    var secondsSpan = document.getElementById("seconds");
 
-// get tag element
-// var countdown = document.getElementById("countdown");
-var daysSpan = document.getElementById("days");
-var hoursSpan = document.getElementById("hours");
-var minutesSpan = document.getElementById("minutes");
-var secondsSpan = document.getElementById("seconds");
+    // update the tags with ids "days," "hours," "minutes," and "seconds" every 1 second
+    setInterval(function () {
+      // find the amount of seconds between now and target
+      var current_date = new Date().getTime();
+      var seconds_left = (target_date - current_date) / 1000;
 
-// update the tag with id "countdown" every 1 second
-setInterval(function () {
+      // do some time calculations
+      var days = parseInt(seconds_left / 86400);
+      var seconds_left = seconds_left % 86400;
 
-  // find the amount of "seconds" between now and target
-  var current_date = new Date().getTime();
-  var seconds_left = (target_date - current_date) / 1000;
+      var hours = parseInt(seconds_left / 3600);
+      var seconds_left = seconds_left % 3600;
 
-  // do some time calculations
-  var days = parseInt(seconds_left / 86400);
-  var seconds_left = seconds_left % 86400;
+      var minutes = parseInt(seconds_left / 60);
+      var seconds = parseInt(seconds_left % 60);
 
-  var hours = parseInt(seconds_left / 3600);
-  var seconds_left = seconds_left % 3600;
+      // code to pad numbers with 0s
+      var zeroPad = 2
 
-  var minutes = parseInt(seconds_left / 60);
-  var seconds = parseInt(seconds_left % 60);
+      if (seconds < 10) {
+        function pad(seconds, zeroPad) {
+          return(1e15 + seconds + "").slice(-zeroPad)
+        }
+      }
 
-  // format countdown string + set tag value
-  // countdown.innerHTML = days + "d, " + hours + "h, "
-  // + minutes + "m, " + seconds + "s";
+      seconds = pad(seconds, zeroPad);
 
-  daysSpan.innerHTML = days;
-  hoursSpan.innerHTML = hours;
-  minutesSpan.innerHTML = minutes;
-  secondsSpan.innerHTML = seconds;
+      daysSpan.innerHTML = days;
+      hoursSpan.innerHTML = hours;
+      minutesSpan.innerHTML = minutes;
+      secondsSpan.innerHTML = seconds;
+    }, 1000);
 
-}, 1000);
+    // for getting Safari to repaint text on resize
+    var causeRepaintsOn = $("span");
 
-// for getting Safari to repaint text on resize
-var causeRepaintsOn = $("span");
+    $(window).resize(function() {
+      causeRepaintsOn.css("z-index", 1);
+    });
 
-$(window).resize(function() {
-  causeRepaintsOn.css("z-index", 1);
-});
+    var two = $("#two");
+    var zero = $("#zero");
+    var one = $("#one");
+    var five = $("#five");
 
-var two = $("#two");
-var zero = $("#zero");
-var one = $("#one");
-var five = $("#five");
+    two.mouseover(function(){
+      $(this).attr("src", "images/days.png");
+    })
+    .mouseout(function(){
+      $(this).attr("src", "images/2.png");
+    });
 
-two.mouseover(function(){
-  $(this).attr("src", "images/days.png");
-})
-.mouseout(function(){
-  $(this).attr("src", "images/2.png");
-});
+    zero.mouseover(function(){
+      $(this).attr("src", "images/hours.png");
+    })
+    .mouseout(function(){
+      $(this).attr("src", "images/0.png");
+    });
 
-zero.mouseover(function(){
-  $(this).attr("src", "images/hours.png");
-})
-.mouseout(function(){
-  $(this).attr("src", "images/0.png");
-});
+    one.mouseover(function(){
+      $(this).attr("src", "images/minutes.png");
+    })
+    .mouseout(function(){
+      $(this).attr("src", "images/1.png");
+    });
 
-one.mouseover(function(){
-  $(this).attr("src", "images/minutes.png");
-})
-.mouseout(function(){
-  $(this).attr("src", "images/1.png");
-});
+    five.mouseover(function(){
+      $(this).attr("src", "images/seconds.png");
+    })
+    .mouseout(function(){
+      $(this).attr("src", "images/5.png");
+    });
+</script>
 
-five.mouseover(function(){
-  $(this).attr("src", "images/seconds.png");
-})
-.mouseout(function(){
-  $(this).attr("src", "images/5.png");
-});
-
- </script>
+</html>
