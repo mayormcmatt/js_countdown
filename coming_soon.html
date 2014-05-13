@@ -102,7 +102,7 @@
 
 <script>
     // set the date we're counting down to
-    var target_date = new Date("June, 13, 2014").getTime();
+    var target_date = new Date("June, 13, 2014, ").getTime();
 
     // variables for time units
     var days, hours, minutes, seconds;
@@ -132,12 +132,33 @@
       // code to pad numbers with 0s
       var zeroPad = 2
 
+      if (days < 10) {
+        function pad(days, zeroPad) {
+          return(1e15 + days + "").slice(-zeroPad)
+        }
+      }
+
+      if (hours < 10) {
+        function pad(hours, zeroPad) {
+          return(1e15 + hours + "").slice(-zeroPad)
+        }
+      }
+
+      if (minutes < 10) {
+        function pad(minutes, zeroPad) {
+          return(1e15 + minutes + "").slice(-zeroPad)
+        }
+      }
+
       if (seconds < 10) {
         function pad(seconds, zeroPad) {
           return(1e15 + seconds + "").slice(-zeroPad)
         }
       }
 
+      days = pad(days, zeroPad);
+      hours = pad(hours, zeroPad);
+      minutes = pad(minutes, zeroPad);
       seconds = pad(seconds, zeroPad);
 
       daysSpan.innerHTML = days;
