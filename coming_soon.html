@@ -1,1 +1,63 @@
-coming_soon.html
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+</head>
+
+<div id="countdown_wrapper">
+  <img id="hexes" src="images/hexes.png"/>
+  <br>
+  <span id="days">20</span>
+  <span id="hours">12</span>
+  <span id="minutes">45</span>
+  <span id="seconds">59</span>
+</div>  
+
+<style>
+#countdown_wrapper{
+  text-align: center;
+}
+
+#hexes{
+  position: relative;
+  margin-top: 100px;
+  width: 60%;
+}
+
+#days, #hours, #minutes, #seconds{
+  position: absolute;
+  font-size: 8vw;
+}
+
+#days{
+  margin-top: -33%;
+  margin-left: -24%;
+}
+
+#hours{
+  margin-top: -22%;
+  margin-left: -13%;
+}
+
+#minutes{
+  margin-top: -26%;
+  margin-left: 2%;
+}
+
+#seconds{
+  margin-top: -15%;
+  margin-left: 15%;
+}
+
+</style>
+
+<script>
+
+causeRepaintsOn = $("span");
+
+$(window).resize(function() {
+  causeRepaintsOn.css("z-index", 1);
+});
+
+</script>
+
+
+
