@@ -20,6 +20,11 @@
   <span id="seconds"></span>
 </div>
 
+<!-- Uncomment lines 24 - 26 for 'LEARN MORE' link -->
+<!-- <div id="learn_more">
+  <a href="#">LEARN MORE</a>
+</div> -->
+
 </body>
 
 <style>
@@ -34,6 +39,18 @@
     #countdown_wrapper{
       text-align: center;
     }
+
+    /*Uncomment lines 43 - 52 for 'LEARN MORE' link*/
+    /*#learn_more {
+      text-align: center;
+      margin-top: 40%;
+    }
+
+    a:hover, a:visited, a:link, a:active {
+      color: #009EC5;
+      text-decoration: none;
+      font-family: 'Orbitron', sans-serif;
+    }*/
 
     /* 2015 images */
 
@@ -65,7 +82,29 @@
 
     /* text spans */
 
-    #hours, #minutes, #seconds{
+    #days{
+      z-index: -1;
+      color: #009EC5;
+      position: absolute;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 7vw;
+      margin-top: 9%;
+      margin-left: -26%;
+    }
+
+    #hours{
+      margin-top: 20.5%;
+      margin-left: -13%;
+      z-index: -1;
+      color: #009EC5;
+      position: absolute;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 6vw;
+    }
+
+    #minutes{
+      margin-top: 16.5%;
+      margin-left: 4%;
       z-index: -1;
       color: #009EC5;
       position: absolute;
@@ -73,32 +112,14 @@
       font-size: 5vw;
     }
 
-    #days{
+    #seconds{
+      margin-top: 27.5%;
+      margin-left: 17%;
       z-index: -1;
       color: #009EC5;
       position: absolute;
       font-family: 'Orbitron', sans-serif;
       font-size: 4vw;
-    }
-
-    #days{
-      margin-top: 9%;
-      margin-left: -26%;
-    }
-
-    #hours{
-      margin-top: 20.5%;
-      margin-left: -13%;;
-    }
-
-    #minutes{
-      margin-top: 16.5%;
-      margin-left: 3.5%;
-    }
-
-    #seconds{
-      margin-top: 27.5%;
-      margin-left: 16%;
     }
 </style>
 
@@ -113,7 +134,7 @@
   preload(["images/0.png", "images/1.png", "images/2.png", "images/5.png", "images/countdown_bg.jpg", "images/days.png", "images/hours.png", "images/minutes.png", "images/seconds.png"]);
 
   // set the date we're counting down to
-  var target_date = new Date("June, 16, 2015").getTime();
+  var target_date = new Date("June, 4, 2014, 06:00").getTime();
 
   // variables for time units
   var days, hours, minutes, seconds;
