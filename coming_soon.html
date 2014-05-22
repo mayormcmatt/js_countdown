@@ -164,39 +164,25 @@
     // code to pad numbers with 0s
     var zeroPad = 2
 
-    if (days >= 100) {
-      var dayPad = 3;
-      function pad(days, dayPad) {
-        var s = days+"";
-        while (s.length < dayPad) s = "0" + s
-        return s
-      }
-    } else if (days < 100) {
-      var dayPad = 2;
+    var pad = function(time, zeroPad) {
+      return String("00" + time).slice(-zeroPad);
+    }
+
+    if (days < 10) {
+      days = pad(days, zeroPad);
     }
 
     if (hours < 10) {
-      function pad(hours, zeroPad) {
-        return(1e15 + hours + "").slice(-zeroPad)
-      }
+      hours = pad(hours, zeroPad);
     }
 
     if (minutes < 10) {
-      function pad(minutes, zeroPad) {
-        return(1e15 + minutes + "").slice(-zeroPad)
-      }
+      minutes = pad(minutes, zeroPad);
     }
 
     if (seconds < 10) {
-      function pad(seconds, zeroPad) {
-        return(1e15 + seconds + "").slice(-zeroPad)
-      }
+      seconds = pad(seconds, zeroPad);
     }
-
-    days = pad(days, dayPad);
-    hours = pad(hours, zeroPad);
-    minutes = pad(minutes, zeroPad);
-    seconds = pad(seconds, zeroPad);
 
     daysSpan.innerHTML = days;
     hoursSpan.innerHTML = hours;
